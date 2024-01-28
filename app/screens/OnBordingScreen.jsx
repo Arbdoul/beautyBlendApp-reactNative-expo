@@ -1,16 +1,27 @@
 import { View, Text, Image } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Swiper from "react-native-swiper";
 import { Brand, Screen1, Screen2, Screen3 } from "../assets";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const OnBordingScreen = () => {
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const checkOnbordingStatus = async () => {
+      const value = await AsyncStorage.getItem("@onbording_complete");
+
+      if (value !== null && value === "true") {
+        navigation.replace("Home");
+      }
+    };
+
+    checkOnbordingStatus();
+  }, []);
   const handleOnBordingComplete = async (e) => {
-    console.log("Triggered: ", e);
     if (e === 2) {
       try {
-        await AsyncStorage.setItem("@onbording_complete", true);
+        await AsyncStorage.setItem("@onbording_complete", "true");
         navigation.navigate("Home");
       } catch (error) {
         console.log("something went wrong", error);
