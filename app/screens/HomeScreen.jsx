@@ -21,11 +21,14 @@ import { Feeds } from "../components";
 const HomeScreen = () => {
   const [searchTerm, setSearchTerm] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [filter, setFiltered] = useState(null);
   const dispatch = useDispatch();
   const feeds = useSelector((state) => state.feeds);
 
   const handleSearch = (text) => {
     setSearchTerm(text);
+
+    setFiltered(feeds?.feeds.filter((item) => item.title.includes(text)));
   };
 
   useEffect(() => {
@@ -79,7 +82,9 @@ const HomeScreen = () => {
           </View>
         ) : (
           <>
-            <Feeds feeds={feeds.feeds} />
+            <Feeds
+              feeds={filter || filter?.length > 0 ? filter : feeds.feeds}
+            />
           </>
         )}
       </ScrollView>
