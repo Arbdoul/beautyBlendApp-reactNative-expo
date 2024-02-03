@@ -16,6 +16,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { fetchFeeds } from "../sanity";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_FEEDS } from "../context/actions/feedsAction";
+import { Feeds } from "../components";
 
 const HomeScreen = () => {
   const [searchTerm, setSearchTerm] = useState();
@@ -78,7 +79,7 @@ const HomeScreen = () => {
           </View>
         ) : (
           <>
-            <Text>feeds</Text>
+            <Feeds feeds={feeds.feeds} />
           </>
         )}
       </ScrollView>
