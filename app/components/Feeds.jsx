@@ -1,10 +1,10 @@
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import FeedDetails from "./Components";
+import FeedDetails from "./FeedDetails";
 
 const Feeds = ({ feeds }) => {
   return (
-    <View className="flex-row items-center justify-center">
+    <View className="flex-row flex-wrap items-center justify-center">
       {feeds?.length > 0 ? (
         <>
           {feeds.map((item, i) => (
