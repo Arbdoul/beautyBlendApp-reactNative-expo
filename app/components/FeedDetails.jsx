@@ -9,13 +9,21 @@ import {
 } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const FeedDetails = ({ data }) => {
   const screenWidth = Math.round(Dimensions.get("window").width);
 
   const cardWidth = screenWidth / 2 - 20;
+
+  const navigation = useNavigation();
+
+  const handleClick = () => {
+    navigation.navigate("ProductScreen", { _id: data?._id });
+  };
   return (
-    <View
+    <TouchableOpacity
+      onPress={handleClick}
       className="p-4 m-2 rounded-xl bg-white flex items-center justify-center"
       style={{ width: cardWidth }}
     >
@@ -41,7 +49,7 @@ const FeedDetails = ({ data }) => {
           <AntDesign name="heart" size={16} color={"#fbfbfb"} />
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

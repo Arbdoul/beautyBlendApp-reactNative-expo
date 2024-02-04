@@ -6,11 +6,11 @@ const feedsReducer = (state = null, action) => {
         feeds: action.feeds,
       };
 
-    case "SET_FEEDS_NULL":
-      return {
-        ...state,
-        feeds: null,
-      };
+    // case "SET_FEEDS_NULL":
+    //   return {
+    //     ...state,
+    //     feeds: null,
+    //   };
 
     default:
       return state;

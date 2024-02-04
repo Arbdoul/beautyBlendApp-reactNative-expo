@@ -7,6 +7,7 @@ import { HomeScreen, OnBordingScreen } from "./screens";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
 import store from "./context/store";
+import ProductScreen from "./screens/ProductScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="OnBordingScreen" component={OnBordingScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="ProductScreen" component={ProductScreen} />
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

@@ -35,7 +35,6 @@ const HomeScreen = () => {
     setIsLoading(true);
     try {
       fetchFeeds().then((res) => {
-        // console.log(res);
         dispatch(SET_FEEDS(res));
         setInterval(() => {
           setIsLoading(false);
